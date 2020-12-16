@@ -15,19 +15,20 @@ function generalCall(nerm) {
     var queryURL = (queryConstants + nerm + "&appid=" + apiKey);
     console.log(queryURL);
     // do search
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-          console.log(response);
-          console.log("apple");
-      });
+    return queryURL
+    
 };
 
-generalCall(cityName);
+var URLL = generalCall(cityName);
 
 
-       
+$.ajax({
+    url: URLL,
+    method: "GET"
+  }).then(function(response) {
+      console.log(response);
+      console.log("apple");
+  });
     
         
     // display results
