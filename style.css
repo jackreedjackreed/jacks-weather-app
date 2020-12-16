@@ -1,0 +1,11 @@
+* {
+    background-color: oldlace;
+}
+
+.container {
+    outline: 2px;
+}
+
+.jumbotron {
+    text-align: center;
+}
