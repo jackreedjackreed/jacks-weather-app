@@ -24,28 +24,48 @@
     <!--left side column, about 1/3rds width-->
     <div class="container border border-2 border-dark">
         <div class="row">
-            <div class="col-4 border border-2 border-dark">Search for a city: </div>
-                <form>
-                    <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                </form>
+            <div class="col-4">
+                <div class="card">
+                  <div class="card-body">
+                    <!-- search for city title -->
+                    <h5 class="card-title">Search for a city: </h5>
+                    <!-- search bar and button -->
+                    <form>
+                        <div class="mb-3">
+                        <input type="city" class="form-control" id="userCity" aria-describedby="emailHelp">
+                        </div>
+                    </form>
+                    <a href="#" id="searchBtn" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                      Cras justo odio
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                  </div>
+                </div>
+              </div>
+            <!-- container, columb about 2/3rds width-->                
             <div class="col-8 border border-4 border-primary">Today's Weather</div>
-            <div class="col-8 border border-4 border-primary align-self-end">Tomorrow's Weather</div>
+        <div class= "row">
+            <!-- 5-Day Forecast -->
+            <div class="col-4"></div>
+            <div class="col-8 border border-4 border-secondary">Tomorrow's Weather</div>
+        </div>
+            
         </div>
     </div>
-        <!-- search for city title -->
-        <!-- search bar and button -->
+       
+        
         <!-- added buttons go here after search-->
-    <!-- container, columb about 2/3rds width-->
         <!-- Name of City (X/XX/XXXX) emoji -->
         <!-- temperature: -->
         <!-- humidity:  -->
         <!-- wind speed: -->
         <!-- UV index: button w/ color -->
-    <!-- 5-Day Forecast -->
+    
         <!--5 cards with: -->  
             <!-- Date -->
             <!-- emoji of weather -->
