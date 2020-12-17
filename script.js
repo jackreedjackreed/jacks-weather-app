@@ -12,15 +12,16 @@ var testing = "api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=d97e
 function getCityObj(nerm) {
      // format what's entered to make it usable in search query
     var queryURL = (queryConstants + nerm + "&appid=" + apiKey);
-    // console.log(queryURL);
     // do search
     $.ajax({
         url: queryURL,
         method: "GET"
       }).then(function(response) {
-          strungObj = JSON.stringify(response);
-          console.log(strungObj[0]);
-          console.log(strungObj);
+          console.log(response)
+        //   strungObj = JSON.stringify(response);
+        //   console.log(strungObj + " strungObj");
+        //   parseObj = strungObj.JSON.parse();
+        //   console.log(parseObj + " parseObj");
           // getDataFromObj(response);
           return response
       });
@@ -28,15 +29,15 @@ function getCityObj(nerm) {
 };
 
 
-console.log(getCityObj("nashville"));
+getCityObj("nashville");
 
 function getNameFromObj(strungObj) {
     var objName = strungObj;
-    console.log(objName + "hey");
+    console.log(objName + " hey");
     return objName;
 }
 
-getNameFromObj(getCityObj("nashville"));
+// getNameFromObj(getCityObj("nashville"));
 
 function getDataFromObj(data) {
     let ObjDict = {}
