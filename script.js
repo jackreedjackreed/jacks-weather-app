@@ -13,18 +13,19 @@ function getCityObj(nerm) {
      // format what's entered to make it usable in search query
     var queryURL = (queryConstants + nerm + "&appid=" + apiKey);
     // do search
-    $.ajax({
+    ($.ajax({
         url: queryURL,
         method: "GET"
       }).then(function(response) {
-          console.log(response)
+          console.log(response);
         //   strungObj = JSON.stringify(response);
         //   console.log(strungObj + " strungObj");
         //   parseObj = strungObj.JSON.parse();
         //   console.log(parseObj + " parseObj");
           // getDataFromObj(response);
-          return response
-      });
+          //return response
+          getDataFromObj(response);
+      }));
     
 };
 
@@ -41,9 +42,11 @@ function getNameFromObj(strungObj) {
 
 function getDataFromObj(data) {
     let ObjDict = {}
-    var cityName = data.name;
-    console.log(cityName);
-    var cityTemp;
+    console.log(data + "logged");
+    console.log(data.coord);
+    console.log(data.name);
+    var nameo = data.name;
+    console.log(nameo + "nameo");
 
 }
 
