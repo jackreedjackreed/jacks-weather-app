@@ -9,51 +9,47 @@ var testing = "api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=d97e
 
 // search for a city
     // build search query --> after button press (NERM = NAME)
-function getCityObj(nerm) {
+function getCityObj(nerm, handleData) {
      // format what's entered to make it usable in search query
     var queryURL = (queryConstants + nerm + "&appid=" + apiKey);
     // do search
     ($.ajax({
         url: queryURL,
         method: "GET"
-      }).then(function(response) {
-          console.log(response);
+      }).then(handleData)
+        // console.log(response);
         //   strungObj = JSON.stringify(response);
         //   console.log(strungObj + " strungObj");
         //   parseObj = strungObj.JSON.parse();
         //   console.log(parseObj + " parseObj");
           // getDataFromObj(response);
           //return response
-          getDataFromObj(response);
-      }));
-    
+    );
 };
+var CityObj = {}
+getCityObj( "nashville", getDataFromObj);
+console.log(CityObj);                                   /// here, cityobj gets its shit defined bc its global
+var testing = getCityObj("milan", getDataFromObj)
+console.log(testing);
 
+function getDataFromObj( response ) {
+    // name
+    CityObj.name = response.name;
+    // weather
+    CityObj.weather = response.weather[0].main; 
+    // temperature
+    var kTemp = response.main.temp;
+    var fTemp = Math.round(kTemp*1.8 - 459.67)
+    CityObj.temperature = fTemp;
+    // humidity
+    CityObj.humidity = response.main.humidity;
+    // wind speed
+    CityObj.windspeed = response.wind.speed;
+    console.log(CityObj);
+    return CityObj
 
-getCityObj("nashville");
-
-function getNameFromObj(strungObj) {
-    var objName = strungObj;
-    console.log(objName + " hey");
-    return objName;
 }
 
-// getNameFromObj(getCityObj("nashville"));
-
-function getDataFromObj(data) {
-    let ObjDict = {}
-    console.log(data + "logged");
-    console.log(data.coord);
-    console.log(data.name);
-    var nameo = data.name;
-    console.log(nameo + "nameo");
-
-}
-
-
-
-       
-    
         
     // display results
         // current conditions in main container›
