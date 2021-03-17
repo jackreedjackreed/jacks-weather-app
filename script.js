@@ -1,3 +1,6 @@
+// Grab DOM Elements from the html
+const searchBar = document.querySelector("#userCity");
+
 
 cityName = "Nashville"
 
@@ -9,9 +12,9 @@ var testing = "api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=d97e
 
 // search for a city
     // build search query --> after button press (NERM = NAME)
-function getCityObj(nerm, handleData) {
+function getCityObj(name, handleData) {
      // format what's entered to make it usable in search query
-    var queryURL = (queryConstants + nerm + "&appid=" + apiKey);
+    var queryURL = (queryConstants + name + "&appid=" + apiKey);
     // do search
     ($.ajax({
         url: queryURL,
