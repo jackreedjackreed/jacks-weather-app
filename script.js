@@ -47,11 +47,26 @@ $(document).ready(function() {
 
             fiveDayForecast = [day1, day2, day3, day4, day5]
             console.log(fiveDayForecast)
-            
 
-            fiveDayForecast.forEach({
+            fiveDayForecast.forEach(day => {
+                const tempF = Math.round((day.main.temp - 273.15) * 1.8 + 32)
+                const humidity = day.main.humidity
+                console.log(humidity);
+                // Append the 5 day bootstrap cards
+                $(".card-group").append(`
+                <div class="card">
+                <div class="card-body">
+                    <!-- Name of City (X/XX/XXXX) emoji -->
+                <h5 class="card-title">Date</h5>
+                <!-- temperature: -->
+                <p class="card-text" id="termperature">Temperature: ${tempF} </p>
+                <!-- humidity:  -->
+                <p class="card-text" id="humidity">Humidity: ${humidity}</p>
+                </div>
+            </div>
+                `);
                 
-            })
+            });
 
         })
     }
