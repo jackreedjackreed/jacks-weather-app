@@ -32,6 +32,8 @@ $(document).ready(function() {
             url: queryURL,
         }).then(function (res) {
             console.log(res);
+            var tempF = Math.round((res.main.temp - 273.15) * 1.8 + 32);
+            console.log(tempF);
         })
     }
 
@@ -43,6 +45,7 @@ $(document).ready(function() {
         var cityName = searchBar.value.trim()
         console.log(cityName);
         currentWeather(cityName);
+        
     
 
     // get 5-day forecast for that city
