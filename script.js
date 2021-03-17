@@ -1,6 +1,12 @@
 // Grab DOM Elements from the html
 const searchBar = document.querySelector("#searchBar");
 const submitBtn = document.querySelector("#submitBtn");
+const cityTitle = document.querySelector("#cityTitle")
+const temperatureBox = document.querySelector("#temperature");
+const humidityBox = document.querySelector("#humidity");
+const windspeedBox = document.querySelector("#windspeed");
+const uvIndexBox = document.querySelector("#uvIndex")
+
 
 
 cityName = "Nashville"
@@ -39,6 +45,11 @@ $(document).ready(function() {
             var windspeed = Math.round(res.wind.speed)
             var tempF = Math.round((res.main.temp - 273.15) * 1.8 + 32);
 
+            cityTitle.innerHTML = "City: " + cityName
+            temperatureBox.innerHTML = "Temperature: " + tempF;
+            humidityBox.innerHTML = "Humidity: " + humidity;
+            windspeedBox.innerHTML = "Windspeed: " + windspeed;
+
             // lat and long for uvi search
             var lat = res.coord.lat;
             var lon = res.coord.lon;
@@ -50,11 +61,19 @@ $(document).ready(function() {
                 url: uvQueryUrl,
             }).then(function (res) {
                 console.log(res.value);
+                var uv = res.value
+                
+                uvIndexBox.innerHTML = "UV Index: " + uv;
             })
-            
+        });
 
-        })
-    }
+        // put all the returned data stored as variables into the html
+
+        
+        
+
+
+    };
 
     // tell form to listen for submit and grab city name
     submitBtn.addEventListener("click", function (e) {
