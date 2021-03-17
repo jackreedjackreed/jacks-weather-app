@@ -32,8 +32,16 @@ $(document).ready(function() {
             url: queryURL,
         }).then(function (res) {
             console.log(res);
+
+
+            var humidity = res.main.humidity
+            console.log(humidity)
+            var windspeed = Math.round(res.wind.speed)
+            console.log(windspeed)
             var tempF = Math.round((res.main.temp - 273.15) * 1.8 + 32);
             console.log(tempF);
+
+
         })
     }
 
