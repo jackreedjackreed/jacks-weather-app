@@ -34,13 +34,24 @@ $(document).ready(function() {
             console.log(res);
 
 
+            // humidity, windspeed, temp in fareinheit
             var humidity = res.main.humidity
-            console.log(humidity)
             var windspeed = Math.round(res.wind.speed)
-            console.log(windspeed)
             var tempF = Math.round((res.main.temp - 273.15) * 1.8 + 32);
-            console.log(tempF);
 
+            // lat and long for uvi search
+            var lat = res.coord.lat;
+            var lon = res.coord.lon;
+
+            var uvQueryUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+            $.ajax({
+                method: 'GET',
+                url: uvQueryUrl,
+            }).then(function (res) {
+                console.log(res.value);
+            })
+            
 
         })
     }
