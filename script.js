@@ -9,11 +9,15 @@ var queryConstants = "https://api.openweathermap.org/data/2.5/weather?q="
 // var testing = "api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=d97eef3a7948c38c7df6cf91a2d5c2a8";
 
 $(document).ready(function() {
+    // get last searched from local storage
 
-
-
-
-
+    // get today information
+    const today = luxon.DateTime.local().toLocaleString({
+        weekday: "short",
+        month: "short",
+        day: "2-digit",
+    })
+    console.log(today);
 
 // search for a city
     // build search query --> after button press (NERM = NAME)
