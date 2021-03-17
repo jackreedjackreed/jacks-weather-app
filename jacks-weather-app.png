@@ -1,11 +1,11 @@
- # Chomp Dat Boiga
+ # Jack's Weather App
 
   ## Description 
   
-  An application built around MySQL access that allows users to input burgers of their choice and choose to devour them or render them edible. Users can also delete burgers from the database if they so choose. 
+  An application that allows users to search for weather forecasts across the globe. Current and weekly forecasts are displayed. 
   
   ## Live Application
-  https://fathomless-shelf-09559.herokuapp.com/
+ https://jackreedjackreed.github.io/jacks-weather-app/#
 
   ## License 
 
@@ -28,7 +28,7 @@
 
   ## Usage 
   
-  run 'node server.js' in the integrated terminal of server.js. Don't forget to add your mysql password!
+  run with VS Code Live Server
 
   ## Contributing 
   
@@ -36,11 +36,11 @@
 
   ## Questions 
   
-  If you have any questions, send them my way on github @jackreedjackreed or send an email to jackr353@mgmail.com.
+  If you have any questions, send them my way on github @jackreedjackreed or send an email to jackr353@mmgmail.com.
 
    ## Demo 
 
-  <img src="./public/assets/img/eat-dat-boiga.png" alt="screnshot of application">
+  <img src="jacks-weather-app.png" alt="screnshot of application">
 
   ## MIT License
 
