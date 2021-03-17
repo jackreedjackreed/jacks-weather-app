@@ -8,13 +8,6 @@ const windspeedBox = document.querySelector("#windspeed");
 const uvIndexBox = document.querySelector("#uvIndex")
 const fiveDayForecastDiv = document.querySelector("#fiveDayForecastDiv")
 
-
-
-cityName = "Nashville"
-
-
-// var testing = "api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=d97eef3a7948c38c7df6cf91a2d5c2a8";
-
 $(document).ready(function() {
     // get last searched from local storage
 
@@ -51,17 +44,17 @@ $(document).ready(function() {
             fiveDayForecast.forEach(day => {
                 const tempF = Math.round((day.main.temp - 273.15) * 1.8 + 32)
                 const humidity = day.main.humidity
-                console.log(humidity);
+                const date = day.dt_txt
                 // Append the 5 day bootstrap cards
                 $(".card-group").append(`
                 <div class="card">
                 <div class="card-body">
                     <!-- Name of City (X/XX/XXXX) emoji -->
-                <h5 class="card-title">Date</h5>
+                <h5 class="card-title">Date ${date}</h5>
                 <!-- temperature: -->
-                <p class="card-text" id="termperature">Temperature: ${tempF} </p>
+                <p class="card-text" id="termperature">Temperature: ${tempF}°F</p>
                 <!-- humidity:  -->
-                <p class="card-text" id="humidity">Humidity: ${humidity}</p>
+                <p class="card-text" id="humidity">Humidity: ${humidity}%</p>
                 </div>
             </div>
                 `);
@@ -90,7 +83,7 @@ $(document).ready(function() {
             var tempF = Math.round((res.main.temp - 273.15) * 1.8 + 32);
 
             cityTitle.innerHTML = "City: " + cityName
-            temperatureBox.innerHTML = "Temperature: " + tempF + " F";
+            temperatureBox.innerHTML = "Temperature: " + tempF + "°F";
             humidityBox.innerHTML = "Humidity: " + humidity + "%";
             windspeedBox.innerHTML = "Windspeed: " + windspeed + " MPH";
 
@@ -110,13 +103,6 @@ $(document).ready(function() {
                 uvIndexBox.innerHTML = "UV Index: " + uv;
             })
         });
-
-        // put all the returned data stored as variables into the html
-
-        
-        
-
-
     };
 
     // tell form to listen for submit and grab city name
@@ -129,71 +115,5 @@ $(document).ready(function() {
         currentWeather(cityName);
         fiveDayWeather(cityName);
         
-    
-
-    // get 5-day forecast for that city
-    
-
     })
-
-// // search for a city
-//     // build search query --> after button press (NERM = NAME)
-//     function getCityObj(name, handleData) {
-//         // format what's entered to make it usable in search query
-//        var queryURL = (queryConstants + name + "&appid=" + apiKey);
-//        // do search
-//        ($.ajax({
-//            url: queryURL,
-//            method: "GET"
-//          }).then(handleData)
-//            // console.log(response);
-//            //   strungObj = JSON.stringify(response);
-//            //   console.log(strungObj + " strungObj");
-//            //   parseObj = strungObj.JSON.parse();
-//            //   console.log(parseObj + " parseObj");
-//              // getDataFromObj(response);
-//              //return response
-//        );
-//    };
-//    var CityObj = {}
-//    getCityObj( "nashville", getDataFromObj);
-//    console.log(CityObj);                                   /// here, cityobj gets its shit defined bc its global
-//    var testing = getCityObj("milan", getDataFromObj)
-//    console.log(testing);
-   
-//    function getDataFromObj( response ) {
-//        // name
-//        CityObj.name = response.name;
-//        // weather
-//        CityObj.weather = response.weather[0].main; 
-//        // temperature
-//        var kTemp = response.main.temp;
-//        var fTemp = Math.round(kTemp*1.8 - 459.67)
-//        CityObj.temperature = fTemp;
-//        // humidity
-//        CityObj.humidity = response.main.humidity;
-//        // wind speed
-//        CityObj.windspeed = response.wind.speed;
-//        console.log(CityObj);
-//        return CityObj
-   
-//    }
-   
-           
-//        // display results
-//            // current conditions in main container›
-//                // icon to rep conditions
-//                // temp, humidity, windspeed
-//                // box for UV index
-//            // future conditions in bottom 5 boxes
-//                // date
-//                // icon for weather
-//                // temp
-//                // humidity
-//        // add to search history
-//            // add button for each city, make it clickable
-//    // upon refresh, presetn last searched city forecast
-
-
 })
-
