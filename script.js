@@ -5,8 +5,7 @@ const submitBtn = document.querySelector("#submitBtn");
 
 cityName = "Nashville"
 
-const apiKey = "d97eef3a7948c38c7df6cf91a2d5c2a8"
-var queryConstants = "https://api.openweathermap.org/data/2.5/weather?q="
+
 // var testing = "api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=d97eef3a7948c38c7df6cf91a2d5c2a8";
 
 $(document).ready(function() {
@@ -21,13 +20,33 @@ $(document).ready(function() {
     
     console.log(today);
 
-    // tell form to listen for submit
+
+    // get current weather for that city
+    function currentWeather(searchedCity){
+        cityName = searchedCity;
+        const apiKey = "d97eef3a7948c38c7df6cf91a2d5c2a8";
+        var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
+
+        $.ajax({
+            method: "GET",
+            url: queryURL,
+        }).then(function (res) {
+            console.log(res);
+        })
+    }
+
+    // tell form to listen for submit and grab city name
     submitBtn.addEventListener("click", function (e) {
         e.preventDefault();
 
         console.log('pressed');
-        var searchedValue = searchBar.value.trim()
-        console.log(searchedValue);
+        var cityName = searchBar.value.trim()
+        console.log(cityName);
+        currentWeather(cityName);
+    
+
+    // get 5-day forecast for that city
+    
 
     })
 
