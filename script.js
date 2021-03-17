@@ -6,6 +6,7 @@ const temperatureBox = document.querySelector("#temperature");
 const humidityBox = document.querySelector("#humidity");
 const windspeedBox = document.querySelector("#windspeed");
 const uvIndexBox = document.querySelector("#uvIndex")
+const fiveDayForecastDiv = document.querySelector("#fiveDayForecastDiv")
 
 
 
@@ -27,6 +28,34 @@ $(document).ready(function() {
     console.log(today);
 
 
+    function fiveDayWeather(searchedCity){
+        cityName = searchedCity
+        const apiKey = "d97eef3a7948c38c7df6cf91a2d5c2a8";
+        var fiveDayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`
+
+        $.ajax({
+            method: "GET",
+            url: fiveDayURL
+        }).then(function (res) {
+            console.log(res.list);
+
+            let day1 = res.list[0];
+            let day2 = res.list[8];
+            let day3 = res.list[16];
+            let day4 = res.list[24];
+            let day5 = res.list[32];
+
+            fiveDayForecast = [day1, day2, day3, day4, day5]
+            console.log(fiveDayForecast)
+            
+
+            fiveDayForecast.forEach({
+                
+            })
+
+        })
+    }
+
     // get current weather for that city
     function currentWeather(searchedCity){
         cityName = searchedCity;
@@ -46,19 +75,19 @@ $(document).ready(function() {
             var tempF = Math.round((res.main.temp - 273.15) * 1.8 + 32);
 
             cityTitle.innerHTML = "City: " + cityName
-            temperatureBox.innerHTML = "Temperature: " + tempF;
-            humidityBox.innerHTML = "Humidity: " + humidity;
-            windspeedBox.innerHTML = "Windspeed: " + windspeed;
+            temperatureBox.innerHTML = "Temperature: " + tempF + " F";
+            humidityBox.innerHTML = "Humidity: " + humidity + "%";
+            windspeedBox.innerHTML = "Windspeed: " + windspeed + " MPH";
 
             // lat and long for uvi search
             var lat = res.coord.lat;
             var lon = res.coord.lon;
 
-            var uvQueryUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+            var uvQueryURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
             $.ajax({
                 method: 'GET',
-                url: uvQueryUrl,
+                url: uvQueryURL,
             }).then(function (res) {
                 console.log(res.value);
                 var uv = res.value
@@ -83,6 +112,7 @@ $(document).ready(function() {
         var cityName = searchBar.value.trim()
         console.log(cityName);
         currentWeather(cityName);
+        fiveDayWeather(cityName);
         
     
 
